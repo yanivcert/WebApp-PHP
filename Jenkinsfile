@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Build (CI)') {
             steps {
-                 git url: 'https://github.com/yanivcert/php-docs-hello-world.git'            
+                 git url: 'https://github.com/yanivcert/WebApp-PHP.git'            
             }
         }
         stage('Deploy to Azure (CD)') {
