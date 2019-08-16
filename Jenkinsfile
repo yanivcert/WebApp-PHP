@@ -18,7 +18,7 @@ pipeline {
     }
     post {
         success {
-            archiveArtifacts '*.php'
+            archiveArtifacts '*.*'
         }
     } 
 }
