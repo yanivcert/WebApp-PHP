@@ -3,6 +3,10 @@ pipeline {
     triggers {
         pollSCM '* * * * *'
     }
+    environment {
+        RESOURCE_GROUP = 'Jenkins'
+        APP_NAME = 'jenkins27402-php'
+    }
     stages {
         stage('Build (CI)') {
             steps {
@@ -11,8 +15,8 @@ pipeline {
         }
         stage('Deploy to Azure (CD)') {
                 steps {
-                    azureWebAppPublish appName: 'jenkins27402-php', azureCredentialsId: 'mySp', 
-                    publishType: 'file', resourceGroup: 'Jenkins'
+                    azureWebAppPublish appName: ${env.APP_NAME}, azureCredentialsId: 'mySp', 
+                    publishType: 'file', resourceGroup: ${env.RESOURCE_GROUP}
                 }
         }
     }
