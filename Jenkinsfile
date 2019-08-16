@@ -1,12 +1,10 @@
 pipeline {
     agent any
-    triggers {
-        pollSCM '* * * * *'
-    }
     stages {
         stage('Build (CI)') {
             steps {
-                 git url: 'https://github.com/yanivcert/WebApp-PHP.git'            
+                 git (url: 'https://github.com/yanivcert/WebApp-PHP.git', 
+                      branch: 'master', poll: true)            
             }
         }
         stage('Deploy to Azure (CD)') {
