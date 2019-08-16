@@ -3,10 +3,10 @@ pipeline {
     stages {
         stage('Build (CI)') {
             steps {
-                 git (url: 'https://github.com/yanivcert/WebApp-PHP.git', 
-                      branch: 'master', poll: true) 
-                echo "Do we have a commit?"
-                echo "${env.GIT_COMMIT}"         
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']],
+                         doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [],
+                         userRemoteConfigs: [[url: 'https://github.com/yanivcert/WebApp-PHP']]]
+                         )        
             }
         }
         stage('Deploy to Azure (CD)') {
