@@ -15,8 +15,8 @@ pipeline {
         }
         stage('Deploy to Azure (CD)') {
                 steps {
-                    azureWebAppPublish appName: ${env.APP_NAME}, azureCredentialsId: 'mySp', 
-                    publishType: 'file', resourceGroup: ${env.RESOURCE_GROUP}
+                    azureWebAppPublish appName: "${env.APP_NAME}", azureCredentialsId: 'mySp', 
+                    publishType: 'file', resourceGroup: "${env.RESOURCE_GROUP}"
                 }
         }
     }
