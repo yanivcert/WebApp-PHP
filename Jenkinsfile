@@ -4,7 +4,9 @@ pipeline {
         stage('Build (CI)') {
             steps {
                  git (url: 'https://github.com/yanivcert/WebApp-PHP.git', 
-                      branch: 'master', poll: true)            
+                      branch: 'master', poll: true) 
+                echo "Do we have a commit?"
+                echo "${env.GIT_COMMIT}"         
             }
         }
         stage('Deploy to Azure (CD)') {
