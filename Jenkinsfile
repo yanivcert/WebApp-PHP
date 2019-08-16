@@ -3,10 +3,7 @@ pipeline {
     stages {
         stage('Build (CI)') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']],
-                         doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [],
-                         userRemoteConfigs: [[url: 'https://github.com/yanivcert/WebApp-PHP']]]
-                         )        
+                git changelog: false, url: 'https://github.com/yanivcert/WebApp-PHP.git'        
             }
         }
         stage('Deploy to Azure (CD)') {
