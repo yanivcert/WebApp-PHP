@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Build (CI)') {
             steps {
-                git changelog: false, url: 'https://github.com/yanivcert/WebApp-PHP.git'        
+                git poll:false, changelog:false, url: 'https://github.com/yanivcert/WebApp-PHP.git'        
             }
         }
         stage('Deploy to Azure (CD)') {
